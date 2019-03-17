@@ -20,6 +20,11 @@ import com.application.tuanlv.comicapp.fragment.SettingsFragment;
 import com.application.tuanlv.comicapp.view.StartActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
+
+//nhiệm vụ ngày mai:
+//hoàn thành giao diện homefragment
+//hoàn thành chức năng đọc truyện
+
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mMainNav;
     private FirebaseAuth mAuth;
