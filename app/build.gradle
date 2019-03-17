@@ -28,6 +28,7 @@ dependencies {
 
 
     implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
     implementation 'com.github.d-max:spots-dialog:1.1@aar'
     implementation 'com.wajahatkarim3.easyflipviewpager:easyflipviewpager:1.0.0'
     //hieu ung chuyen canh chapter
