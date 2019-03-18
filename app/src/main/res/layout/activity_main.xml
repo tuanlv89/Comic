@@ -16,8 +16,8 @@
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/nav_main"
         app:menu="@menu/nav_item"
-        app:itemIconTint="@color/primaryLightColor"
-        app:itemTextColor="@color/primaryLightColor"
+        app:itemIconTint="@color/primaryTextColor"
+        app:itemTextColor="@color/primaryTextColor"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"></android.support.design.widget.BottomNavigationView>

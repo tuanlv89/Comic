@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         initView();
         mAuth = FirebaseAuth.getInstance();
         updateUI();
+        setFragment(HomeFragment.newInstance());
 
         //set fragment by click navigation
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
