@@ -8,5 +8,4 @@ import java.util.ArrayList;
 public class SupportClass {
     public static Comic comicSelected;
     public static Chapter chapterSelected;
-    public static ArrayList<Comic> comicFavorites = new ArrayList<>();
 }
