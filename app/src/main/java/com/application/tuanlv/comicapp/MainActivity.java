@@ -22,7 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 //nhiệm vụ ngày mai:
-//hoàn thành giao diện homefragment
 //hoàn thành chức năng đọc truyện
 
 public class MainActivity extends AppCompatActivity {

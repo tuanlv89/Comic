@@ -7,8 +7,10 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.application.tuanlv.comicapp.R;
 import com.application.tuanlv.comicapp.SupportClass;
@@ -40,6 +42,15 @@ public class ChaptersActivity extends AppCompatActivity {
         recycler_chapter.setHasFixedSize(true);
         recycler_chapter.addItemDecoration(new DividerItemDecoration(this, ((LinearLayoutManager) layoutManager).getOrientation()));
         recycler_chapter.setAdapter(new MyChapterAdapter(this, chapters));
+
+
+        //add to Favorite
+        btnFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getBaseContext(), "Added to favorites", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

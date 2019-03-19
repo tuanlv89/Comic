@@ -90,7 +90,7 @@ public class HomeFragment extends Fragment {
                     i++;
                 }
                 recycler_comic.setHasFixedSize(true);
-                RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+                RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
                 recycler_comic.setLayoutManager(layoutManager);
                 myComicAdapter = new MyComicAdapter(getContext(), comicList);
                 recycler_comic.setAdapter(myComicAdapter);
