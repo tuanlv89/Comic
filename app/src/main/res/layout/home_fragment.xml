@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
-    android:id="@+id/swipe"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.v4.widget.SwipeRefreshLayout android:id="@+id/swipe"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:orientation="vertical"
@@ -10,9 +11,11 @@
         android:layout_height="match_parent">
         <ss.com.bannerslider.Slider
             android:id="@+id/banner_slider"
-            android:paddingBottom="5dp"
+            app:slider_interval="3000"
+            app:slider_loopSlides="true"
+            android:paddingBottom="8dp"
             android:layout_width="match_parent"
-            android:layout_height="160dp">
+            android:layout_height="150dp">
         </ss.com.bannerslider.Slider>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_comic"

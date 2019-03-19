@@ -3,6 +3,7 @@ package com.application.tuanlv.comicapp.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,16 +36,16 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
-        return view.equals(o);
+        return view==o;
         //return true neu doi tuong da duoc tao ra roi va nguoc lai
     }
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        super.destroyItem(container, position, object);
+        //super.destroyItem(container, position, object);  //super.destroyItem only works on FragmentPagerAdapter
         //Giai phong bo nho cac phan tu bi an di
         Log.i("PAGE", "REMOVE");
-        container.removeView((View) object);
+        ((ViewPager) container).removeView((View) object);
 
     }
 

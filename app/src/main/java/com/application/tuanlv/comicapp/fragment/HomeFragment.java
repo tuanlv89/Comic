@@ -82,12 +82,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<Comic> comicList = new ArrayList<>();
-                int i = 0;
                 for(DataSnapshot data: dataSnapshot.getChildren()) {
                     Comic comic = data.getValue(Comic.class);
                     comicList.add(comic);
-                    Log.i("ERROR", comicList.get(i).getImage()+"");
-                    i++;
                 }
                 recycler_comic.setHasFixedSize(true);
                 RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
@@ -95,7 +92,7 @@ public class HomeFragment extends Fragment {
                 myComicAdapter = new MyComicAdapter(getContext(), comicList);
                 recycler_comic.setAdapter(myComicAdapter);
                 refreshLayout.setRefreshing(false);
-                Log.i("ERROR", comicList.size()+"");
+                //Log.i("ERROR", comicList.size()+"");
             }
 
             @Override

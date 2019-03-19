@@ -48,6 +48,7 @@ public class ChaptersActivity extends AppCompatActivity {
         btnFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SupportClass.comicFavorites.add(SupportClass.comicSelected);
                 Toast.makeText(getBaseContext(), "Added to favorites", Toast.LENGTH_SHORT).show();
             }
         });
