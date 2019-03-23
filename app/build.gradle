@@ -29,13 +29,14 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-core:16.0.6'
     implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'com.google.firebase:firebase-database:16.0.6'
+    implementation 'com.google.firebase:firebase-messaging:17.4.0'
+
     implementation 'com.github.d-max:spots-dialog:1.1@aar'
     implementation 'com.wajahatkarim3.easyflipviewpager:easyflipviewpager:1.0.0'
-    //hieu ung chuyen canh chapter
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.ss.bannerslider:bannerslider:2.0.0'
     implementation 'com.android.support:design:28.0.0'
-    implementation 'com.google.firebase:firebase-database:16.0.6'
     implementation 'com.github.chrisbanes.photoview:library:1.2.4'
 }
 apply plugin: 'com.google.gms.google-services'
