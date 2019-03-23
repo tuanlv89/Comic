@@ -54,7 +54,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_start);
         initView();
 
-        handler.postDelayed(runnable, 2000);
+        handler.postDelayed(runnable, 3000);
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.fade_in);
         imgLogo.setAnimation(animation);
 

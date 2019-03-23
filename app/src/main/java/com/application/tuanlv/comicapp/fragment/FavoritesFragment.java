@@ -1,11 +1,15 @@
 package com.application.tuanlv.comicapp.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,8 +45,9 @@ public class FavoritesFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         mUsers = FirebaseDatabase.getInstance().getReference().child("Users");
         loadListFavoriteComics();
-
-
+        Toolbar toolbar = view.findViewById(R.id.toolbar_favorites);
+        ((AppCompatActivity)getActivity()).getSupportActionBar();
+        toolbar.setTitle("Favorites");
 
 
         return view;
@@ -59,11 +64,15 @@ public class FavoritesFragment extends Fragment {
                             comics.add(data.getValue(Comic.class));
                         }
                         if(comics!=null) {
-                            MyComicAdapter comicAdapter = new MyComicAdapter(getContext(), comics);
-                            RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
-                            recycler_favorites.setHasFixedSize(true);
-                            recycler_favorites.setLayoutManager(layoutManager);
-                            recycler_favorites.setAdapter(comicAdapter);
+                            try {
+                                MyComicAdapter comicAdapter = new MyComicAdapter(getContext(), comics);
+                                RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
+                                recycler_favorites.setHasFixedSize(true);
+                                recycler_favorites.setLayoutManager(layoutManager);
+                                recycler_favorites.setAdapter(comicAdapter);
+                            } catch (Exception e) {
+                                Log.i("EXCEPTION", e.getMessage());
+                            }
                         }
                     }
 
@@ -73,4 +82,6 @@ public class FavoritesFragment extends Fragment {
                     }
                 });
     }
+
+
 }

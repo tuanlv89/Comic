@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.Toast;
 
 import com.application.tuanlv.comicapp.R;
@@ -40,6 +39,7 @@ public class HomeFragment extends Fragment {
     DatabaseReference comics;
 
 
+
     public static HomeFragment newInstance() {
         HomeFragment homeFragment = new HomeFragment();
         return homeFragment;
@@ -57,6 +57,7 @@ public class HomeFragment extends Fragment {
 
     }
 
+
     private void loadBanner() {
         banners.addListenerForSingleValueEvent(new ValueEventListener() {  ////fetch array banner
             @Override
@@ -68,6 +69,7 @@ public class HomeFragment extends Fragment {
                 }
                 //setadapter
                 slider.setAdapter(new MySliderAdapter(bannerList));
+                slider.setInterval(3000);
                 refreshLayout.setRefreshing(false);
             }
 
@@ -89,8 +91,12 @@ public class HomeFragment extends Fragment {
                 recycler_comic.setHasFixedSize(true);
                 RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
                 recycler_comic.setLayoutManager(layoutManager);
-                myComicAdapter = new MyComicAdapter(getContext(), comicList);
-                recycler_comic.setAdapter(myComicAdapter);
+                try {
+                    myComicAdapter = new MyComicAdapter(getContext(), comicList);
+                    recycler_comic.setAdapter(myComicAdapter);
+                } catch (Exception e) {
+                    Log.i("EXCEPTION", e.getMessage());
+                }
                 refreshLayout.setRefreshing(false);
                 //Log.i("ERROR", comicList.size()+"");
             }
@@ -122,7 +128,6 @@ public class HomeFragment extends Fragment {
             public void onRefresh() {
                 loadBanner();
                 loadComic();
-                //myComicAdapter.notifyDataSetChanged();
             }
         });
         refreshLayout.post(new Runnable() {

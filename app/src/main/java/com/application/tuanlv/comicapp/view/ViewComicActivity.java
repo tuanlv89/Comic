@@ -9,6 +9,7 @@ import com.application.tuanlv.comicapp.R;
 import com.application.tuanlv.comicapp.SupportClass;
 import com.application.tuanlv.comicapp.adapter.ViewPagerAdapter;
 import com.application.tuanlv.comicapp.model.Chapter;
+import com.wajahatkarim3.easyflipviewpager.BookFlipPageTransformer;
 
 import java.util.ArrayList;
 
@@ -31,6 +32,10 @@ public class ViewComicActivity extends AppCompatActivity {
                 ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getBaseContext(), SupportClass.chapterSelected.getLinks());
                 if(viewPagerAdapter!=null) {
                     viewPager.setAdapter(viewPagerAdapter);
+                    //Animation
+                    BookFlipPageTransformer flipPageTransformer = new BookFlipPageTransformer();
+                    flipPageTransformer.setScaleAmountPercent(3f);
+                    viewPager.setPageTransformer(true, flipPageTransformer);
                 }
             }
         } else {

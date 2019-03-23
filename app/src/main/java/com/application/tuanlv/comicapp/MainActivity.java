@@ -1,8 +1,8 @@
 package com.application.tuanlv.comicapp;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
+import android.content.IntentFilter;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -11,22 +11,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.application.tuanlv.comicapp.fragment.CategoriesFragment;
 import com.application.tuanlv.comicapp.fragment.FavoritesFragment;
 import com.application.tuanlv.comicapp.fragment.HomeFragment;
 import com.application.tuanlv.comicapp.fragment.SettingsFragment;
+import com.application.tuanlv.comicapp.receiver.NetworkChangeReceiver;
 import com.application.tuanlv.comicapp.view.StartActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-//nhiệm vụ ngày mai:
-//hoàn thành chức năng đọc truyện
-
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mMainNav;
     private FirebaseAuth mAuth;
+    private BroadcastReceiver receiver;
+    private static LinearLayout noInternetLayout;
+    private static FrameLayout frameLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         updateUI();
         setFragment(HomeFragment.newInstance());
+
+        //Broadcast
+        receiver = new NetworkChangeReceiver();
+        final IntentFilter filter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
+        registerReceiver(receiver, filter);
+
 
         //set fragment by click navigation
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -62,6 +72,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public static void notificationNetwork(boolean value) {
+        if(value == true) {
+            noInternetLayout.setVisibility(View.INVISIBLE);
+            frameLayout.setVisibility(View.VISIBLE);
+        } else {
+            noInternetLayout.setVisibility(View.VISIBLE);
+            frameLayout.setVisibility(View.INVISIBLE);
+        }
+
+    }
+
     private void updateUI() {
         if (mAuth.getCurrentUser() != null){
             Log.i("MainActivity", "fAuth != null");
@@ -81,5 +102,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         mMainNav = findViewById(R.id.nav_main);
+        noInternetLayout = findViewById(R.id.no_internet);
+        frameLayout = findViewById(R.id.frame_main);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            unregisterReceiver(receiver);
+        } catch (Exception e) {
+            Log.i("EXCEPTION", e.getMessage());
+        }
     }
 }

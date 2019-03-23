@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,10 +24,10 @@ import java.util.ArrayList;
 
 public class MyComicAdapter extends RecyclerView.Adapter<MyComicAdapter.MyViewHolder> {
 
-    public static int chapterIndex = -1;
     Context context;
     LayoutInflater inflater;
     ArrayList<Comic> comics;
+
 
 
     public MyComicAdapter(Context context, ArrayList<Comic> comics) {
@@ -65,6 +67,7 @@ public class MyComicAdapter extends RecyclerView.Adapter<MyComicAdapter.MyViewHo
     public int getItemCount() {
         return comics.size();
     }
+
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
