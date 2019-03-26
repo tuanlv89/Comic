@@ -6,6 +6,8 @@ public class Comic {
     private String Name;
     private String Image;
     private ArrayList<Chapter> Chapters;
+    private ArrayList<String> Categories;
+    private boolean Like;
 
     public Comic() {
     }
@@ -32,5 +34,21 @@ public class Comic {
 
     public void setChapters(ArrayList<Chapter> chapters) {
         Chapters = chapters;
+    }
+
+    public ArrayList<String> getCategories() {
+        return Categories;
+    }
+
+    public void setCategories(ArrayList<String> categories) {
+        Categories = categories;
+    }
+
+    public boolean isLike() {
+        return Like;
+    }
+
+    public void setLike(boolean like) {
+        Like = like;
     }
 }

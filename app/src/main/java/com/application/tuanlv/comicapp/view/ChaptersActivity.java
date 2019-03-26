@@ -8,6 +8,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -53,8 +54,12 @@ public class ChaptersActivity extends AppCompatActivity {
         recycler_chapter.setAdapter(new MyChapterAdapter(this, chapters));
 
 
+
         mAuth = FirebaseAuth.getInstance();
         user = FirebaseDatabase.getInstance().getReference().child("Users");
+
+        setStatusFloatingActionButton();
+
         //add to Favorite
         btnFav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,20 +75,74 @@ public class ChaptersActivity extends AppCompatActivity {
                             }
                         }
                         if(!isExist) {
+                            // if comic is not exist in favorites then add to favorites list
                             user.child(mAuth.getCurrentUser().getUid()).child("Favorites").push().setValue(SupportClass.comicSelected);
+                            //setStatusFloatingActionButton();
+                            btnFav.setImageResource(R.drawable.ic_clear_white_24dp);
+                            Toast.makeText(getBaseContext(), "Added to favorites", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // if comic is exist in favorites then remove it
+                            removeComicFromFavorite();
+                            setStatusFloatingActionButton();
+                            Toast.makeText(getBaseContext(), "Removed from favorites", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Toast.makeText(getBaseContext(), "Can not add into Favorites", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
-                Toast.makeText(getBaseContext(), "Added to favorites", Toast.LENGTH_SHORT).show();
-
             }
         });
 
+    }
+
+    private void setStatusFloatingActionButton() {
+        try {
+            user.child(mAuth.getCurrentUser().getUid()).child("Favorites").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    for(DataSnapshot data: dataSnapshot.getChildren()) {
+                        Comic comic = data.getValue(Comic.class);
+                        if(comic.getImage().equals(SupportClass.comicSelected.getImage())) {
+                            btnFav.setImageResource(R.drawable.ic_clear_white_24dp);
+                            break;
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        } catch (NullPointerException e) {
+
+        }
+        btnFav.setImageResource(R.drawable.ic_favorite_white_24dp);
+    }
+
+
+    private void removeComicFromFavorite() {
+        user.child(mAuth.getCurrentUser().getUid()).child("Favorites").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot data: dataSnapshot.getChildren()) {
+                    Comic comic = data.getValue(Comic.class);
+                    if(SupportClass.comicSelected.getImage().equals(comic.getImage())) {
+                        user.child(mAuth.getCurrentUser().getUid()).child("Favorites").child(data.getKey()).removeValue();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void initView() {
