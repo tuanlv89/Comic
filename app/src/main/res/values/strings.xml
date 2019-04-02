@@ -2,4 +2,6 @@
     <string name="app_name">Comic Life</string>
     <string name="default_notification_channel_id">com.application.tuanlv.comicapp</string>
     <string name="default_notification_channel_name">Comic life</string>
+    <string name="email_title">title</string>
+    <string name="email_body">message</string>
 </resources>

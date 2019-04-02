@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.application.tuanlv.comicapp.R;
 import com.application.tuanlv.comicapp.adapter.MyComicAdapter;
 import com.application.tuanlv.comicapp.adapter.MySliderAdapter;
+import com.application.tuanlv.comicapp.dialog.ProgressLoading;
 import com.application.tuanlv.comicapp.model.Comic;
 import com.application.tuanlv.comicapp.service.PicassoLoadingService;
 import com.google.firebase.database.DataSnapshot;
@@ -98,6 +99,7 @@ public class HomeFragment extends Fragment {
                     Log.i("EXCEPTION", e.getMessage());
                 }
                 refreshLayout.setRefreshing(false);
+                ProgressLoading.dismiss();
                 //Log.i("ERROR", comicList.size()+"");
             }
 
@@ -117,7 +119,7 @@ public class HomeFragment extends Fragment {
         slider.init(new PicassoLoadingService());
         refreshLayout = view.findViewById(R.id.swipe);
         refreshLayout.setColorSchemeResources(R.color.primaryColor, R.color.primaryDarkColor);
-
+        ProgressLoading.show(getContext());
         setOnRefreshListener();
         return view;
     }

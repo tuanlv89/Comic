@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clipToPadding="false"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -22,7 +23,6 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_marginTop="10dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/avatar"
                 android:id="@+id/img_avatar_setting"
                 app:civ_border_width="2dp"
                 app:civ_border_color="#FF000000"
@@ -56,7 +56,7 @@
             android:textColor="@color/primaryLightColor"
             android:layout_marginTop="18dp"
             android:layout_marginLeft="10dp"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:text="User setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -110,7 +110,7 @@
             android:textColor="@color/primaryLightColor"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:text="Preferences"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -138,7 +138,6 @@
                 android:textSize="18sp" />
         </RelativeLayout>
 
-
         <RelativeLayout
             android:id="@+id/tv_rate_app_setting"
             android:layout_marginTop="8dp"
@@ -158,6 +157,29 @@
                 android:layout_marginLeft="12dp"
                 android:layout_toRightOf="@id/img_rate"
                 android:text="Rate app"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tv_share_setting"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/img_share"
+                android:src="@mipmap/icons8_share_500"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@id/img_share"
+                android:text="Share"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="18sp" />
         </RelativeLayout>

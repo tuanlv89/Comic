@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.application.tuanlv.comicapp.R;
 import com.application.tuanlv.comicapp.SupportClass;
 import com.application.tuanlv.comicapp.adapter.MyComicAdapter;
+import com.application.tuanlv.comicapp.dialog.ProgressLoading;
 import com.application.tuanlv.comicapp.model.Comic;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -44,6 +45,7 @@ public class FavoritesFragment extends Fragment {
         recycler_favorites = view.findViewById(R.id.recycler_favorites);
         mAuth = FirebaseAuth.getInstance();
         mUsers = FirebaseDatabase.getInstance().getReference().child("Users");
+        ProgressLoading.show(getContext());
         loadListFavoriteComics();
         Toolbar toolbar = view.findViewById(R.id.toolbar_favorites);
         ((AppCompatActivity)getActivity()).getSupportActionBar();
@@ -74,6 +76,7 @@ public class FavoritesFragment extends Fragment {
                                 Log.i("EXCEPTION", e.getMessage());
                             }
                         }
+                        ProgressLoading.dismiss();
                     }
 
                     @Override

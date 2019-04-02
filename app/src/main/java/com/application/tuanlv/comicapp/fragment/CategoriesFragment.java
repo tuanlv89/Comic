@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.application.tuanlv.comicapp.R;
 import com.application.tuanlv.comicapp.SupportClass;
 import com.application.tuanlv.comicapp.adapter.MyComicAdapter;
+import com.application.tuanlv.comicapp.dialog.ProgressLoading;
 import com.application.tuanlv.comicapp.model.Comic;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,6 +45,7 @@ public class CategoriesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.categories_fragment, container, false);
         initView(view);
+        ProgressLoading.show(getContext());
         fetchComicData();
         setLayoutManager();
         try {
@@ -105,6 +107,7 @@ public class CategoriesFragment extends Fragment {
                         }
                     }
                 }
+                ProgressLoading.dismiss();
             }
 
             @Override
