@@ -23,6 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:textStyle="bold|italic"
+                android:background="#FF7043"
                 android:textSize="20sp"
                 android:padding="8dp"
                 android:text="Action"
@@ -32,7 +34,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_action_categories"
                 android:layout_width="match_parent"
-                android:layout_height="170dp">
+                android:layout_height="172dp">
             </android.support.v7.widget.RecyclerView>
         </LinearLayout>
 
@@ -41,6 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:textStyle="bold|italic"
+                android:background="#FF7043"
                 android:padding="8dp"
                 android:text="Comedy"
                 android:textColor="@color/primaryTextColor"
@@ -50,7 +54,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_comedy_categories"
                 android:layout_width="match_parent"
-                android:layout_height="170dp"/>
+                android:layout_height="172dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -58,6 +62,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:textStyle="bold|italic"
+                android:background="#FF7043"
                 android:text="Adventure"
                 android:padding="8dp"
                 android:textColor="@color/primaryTextColor"
@@ -67,7 +73,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_adventure_categories"
                 android:layout_width="match_parent"
-                android:layout_height="170dp"/>
+                android:layout_height="172dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -75,6 +81,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
+                android:textStyle="bold|italic"
+                android:background="#FF7043"
                 android:text="Sports"
                 android:textColor="@color/primaryTextColor"
                 android:padding="8dp"
@@ -84,7 +92,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_sports_categories"
                 android:layout_width="match_parent"
-                android:layout_height="170dp"/>
+                android:layout_height="172dp"/>
         </LinearLayout>
 
     </LinearLayout>

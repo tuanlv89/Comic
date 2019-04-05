@@ -83,7 +83,7 @@ public class ChaptersActivity extends AppCompatActivity {
                         } else {
                             // if comic is exist in favorites then remove it
                             removeComicFromFavorite();
-                            setStatusFloatingActionButton();
+                            //setStatusFloatingActionButton();
                             Toast.makeText(getBaseContext(), "Removed from favorites", Toast.LENGTH_SHORT).show();
                         }
                     }

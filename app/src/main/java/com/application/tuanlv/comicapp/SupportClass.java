@@ -13,4 +13,6 @@ public class SupportClass {
     public static ArrayList<Comic> comedyList = new ArrayList<>();
     public static ArrayList<Comic> adventureList = new ArrayList<>();
     public static ArrayList<Comic> sportsList = new ArrayList<>();
+
+    public static boolean isOnline;
 }

@@ -97,15 +97,25 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
             case R.id.txt_forgotPass:
                 // status: not working
                 String mEmail = edtEmail.getEditText().getText().toString().trim();
-                FirebaseAuth.getInstance().sendPasswordResetEmail(mEmail)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(StartActivity.this, "Please check new password in your email!", Toast.LENGTH_LONG).show();
+                if(mEmail.isEmpty()||mEmail==null) {
+                    Snackbar.make(btnLogIn, "Please enter an email, we will help you create a new password!", Snackbar.LENGTH_LONG).show();
+                }
+                try {
+                    FirebaseAuth.getInstance().sendPasswordResetEmail(mEmail)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Snackbar.make(btnLogIn, "Success! " + "Please check new password in your email!", Snackbar.LENGTH_LONG).show();
+                                        //Toast.makeText(StartActivity.this, "Please check new password in your email!", Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Snackbar.make(btnLogIn, "Invalid email!", Snackbar.LENGTH_LONG).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                } catch (IllegalArgumentException e) {
+
+                }
                 break;
         }
     }
@@ -130,4 +140,5 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
     }
+
 }

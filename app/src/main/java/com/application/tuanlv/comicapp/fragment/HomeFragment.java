@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.application.tuanlv.comicapp.R;
+import com.application.tuanlv.comicapp.SupportClass;
 import com.application.tuanlv.comicapp.adapter.MyComicAdapter;
 import com.application.tuanlv.comicapp.adapter.MySliderAdapter;
 import com.application.tuanlv.comicapp.dialog.ProgressLoading;
@@ -119,7 +120,9 @@ public class HomeFragment extends Fragment {
         slider.init(new PicassoLoadingService());
         refreshLayout = view.findViewById(R.id.swipe);
         refreshLayout.setColorSchemeResources(R.color.primaryColor, R.color.primaryDarkColor);
-        ProgressLoading.show(getContext());
+        if(SupportClass.isOnline) {
+            ProgressLoading.show(getContext());
+        }
         setOnRefreshListener();
         return view;
     }

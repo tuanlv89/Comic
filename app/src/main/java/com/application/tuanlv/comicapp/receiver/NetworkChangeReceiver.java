@@ -7,6 +7,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
+import com.application.tuanlv.comicapp.SupportClass;
+
 import static com.application.tuanlv.comicapp.MainActivity.notificationNetwork;
 
 public class NetworkChangeReceiver extends BroadcastReceiver {
@@ -15,8 +17,10 @@ public class NetworkChangeReceiver extends BroadcastReceiver {
         try {
             if(isOnline(context)) {
                 notificationNetwork(true);
+                SupportClass.isOnline = true;
             } else {
                 notificationNetwork(false);
+                SupportClass.isOnline = false;
             }
         } catch (Exception e) {
             Log.i("EXCEPTION", e.getMessage());

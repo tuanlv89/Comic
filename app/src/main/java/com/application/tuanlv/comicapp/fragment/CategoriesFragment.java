@@ -45,14 +45,10 @@ public class CategoriesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.categories_fragment, container, false);
         initView(view);
-        ProgressLoading.show(getContext());
-        fetchComicData();
-        setLayoutManager();
-        try {
-            setAdapter();
-        } catch (Exception e) {
-            Log.i("EXCEPTION", e.getMessage());
+        if(SupportClass.isOnline) {
+            ProgressLoading.show(getContext());
         }
+        fetchComicData();
 
         return view;
     }
@@ -106,6 +102,12 @@ public class CategoriesFragment extends Fragment {
                             if(!isExist(comic, SupportClass.sportsList)) SupportClass.sportsList.add(comic);
                         }
                     }
+                }
+                setLayoutManager();
+                try {
+                    setAdapter();
+                } catch (Exception e) {
+                    Log.i("EXCEPTION", e.getMessage());
                 }
                 ProgressLoading.dismiss();
             }

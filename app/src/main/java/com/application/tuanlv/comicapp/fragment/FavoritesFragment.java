@@ -45,7 +45,9 @@ public class FavoritesFragment extends Fragment {
         recycler_favorites = view.findViewById(R.id.recycler_favorites);
         mAuth = FirebaseAuth.getInstance();
         mUsers = FirebaseDatabase.getInstance().getReference().child("Users");
-        ProgressLoading.show(getContext());
+        if(SupportClass.isOnline) {
+            ProgressLoading.show(getContext());
+        }
         loadListFavoriteComics();
         Toolbar toolbar = view.findViewById(R.id.toolbar_favorites);
         ((AppCompatActivity)getActivity()).getSupportActionBar();
