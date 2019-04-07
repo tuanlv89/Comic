@@ -254,7 +254,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 shareLink();
                 break;
             case R.id.tv_rate_app_setting:
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getActivity().getPackageName()));
                 this.startActivity(intent);
                 break;
             case R.id.tv_feed_back_setting:
@@ -276,7 +276,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         String text = "Install this cool application: ";
         //String link = "https://play.google.com/store/apps/details?id=" + appPackageName;
         /*demo*/
-        String link = "https://play.google.com/store/apps/details?id=" + "com.application.tuanlv.comicapp";
+        String link = "https://play.google.com/store/apps/details?id=" + appPackageName;
         i.putExtra(Intent.EXTRA_TEXT, text + " " + link);
         startActivity(Intent.createChooser(i, "Share link:"));
     }

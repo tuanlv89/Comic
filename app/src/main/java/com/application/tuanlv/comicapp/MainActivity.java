@@ -26,6 +26,8 @@ import com.application.tuanlv.comicapp.receiver.NetworkChangeReceiver;
 import com.application.tuanlv.comicapp.view.StartActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
+import static com.application.tuanlv.comicapp.fragment.CategoriesFragment.scrollView;
+
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mMainNav;
@@ -118,6 +120,15 @@ public class MainActivity extends AppCompatActivity {
         noInternetLayout = findViewById(R.id.no_internet);
         frameLayout = findViewById(R.id.frame_main);
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        if (CategoriesFragment.materialSearchView.isSearchOpen()) {
+//            CategoriesFragment.materialSearchView.closeSearch();
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 
     @Override
     protected void onDestroy() {

@@ -74,7 +74,7 @@ public class ChaptersActivity extends AppCompatActivity {
                                 break;
                             }
                         }
-                        if(!isExist) {
+                        if(isExist==false) {
                             // if comic is not exist in favorites then add to favorites list
                             user.child(mAuth.getCurrentUser().getUid()).child("Favorites").push().setValue(SupportClass.comicSelected);
                             //setStatusFloatingActionButton();
@@ -83,6 +83,7 @@ public class ChaptersActivity extends AppCompatActivity {
                         } else {
                             // if comic is exist in favorites then remove it
                             removeComicFromFavorite();
+                            btnFav.setImageResource(R.drawable.ic_favorite_white_24dp);
                             //setStatusFloatingActionButton();
                             Toast.makeText(getBaseContext(), "Removed from favorites", Toast.LENGTH_SHORT).show();
                         }

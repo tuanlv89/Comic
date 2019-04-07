@@ -1,17 +1,29 @@
 package com.application.tuanlv.comicapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+
+
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.application.tuanlv.comicapp.R;
@@ -19,39 +31,49 @@ import com.application.tuanlv.comicapp.SupportClass;
 import com.application.tuanlv.comicapp.adapter.MyComicAdapter;
 import com.application.tuanlv.comicapp.dialog.ProgressLoading;
 import com.application.tuanlv.comicapp.model.Comic;
+import com.application.tuanlv.comicapp.view.SearchActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
+
 
 import java.util.ArrayList;
 
 
-public class CategoriesFragment extends Fragment {
 
+
+public class CategoriesFragment extends Fragment {
     private MyComicAdapter comedyAdapter, adventureAdapter, actionAdapter, sportsAdapter;
     private RecyclerView recycler_action, recycler_adventure, recycler_comedy, recycler_sports;
-    private ActionBar toolbar_categories;
+    private Toolbar toolbar_categories;
     private DatabaseReference mComic;
-
+    public static ScrollView scrollView;
     public static CategoriesFragment newInstance() {
         CategoriesFragment categoriesFragment = new CategoriesFragment();
         return categoriesFragment;
     }
+
+
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.categories_fragment, container, false);
         initView(view);
+        getActivity().invalidateOptionsMenu();
+        setHasOptionsMenu(true);
         if(SupportClass.isOnline) {
             ProgressLoading.show(getContext());
         }
         fetchComicData();
-
         return view;
     }
+
+
 
     private void setAdapter() {
         comedyAdapter = new MyComicAdapter(getContext(), SupportClass.comedyList);
@@ -134,8 +156,28 @@ public class CategoriesFragment extends Fragment {
         recycler_adventure = view.findViewById(R.id.recycler_adventure_categories);
         recycler_comedy = view.findViewById(R.id.recycler_comedy_categories);
         recycler_sports = view.findViewById(R.id.recycler_sports_categories);
+        toolbar_categories = view.findViewById(R.id.toolbar_categories);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar_categories);
 
-        toolbar_categories = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        scrollView = view.findViewById(R.id.scroll_view);
+    }
 
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.search_item, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.search_home:
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

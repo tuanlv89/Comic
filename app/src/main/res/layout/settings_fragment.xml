@@ -37,14 +37,12 @@
                 android:textColor="@color/primaryTextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Harry Phạm"
                 android:textStyle="bold"
                 android:textSize="25sp" />
 
             <TextView
                 android:layout_centerHorizontal="true"
                 android:id="@+id/tv_email_setting"
-                android:text="levantuan1110@gmail.com"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_username_setting"
@@ -63,15 +61,14 @@
 
         <RelativeLayout
             android:id="@+id/tv_change_passwd"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_marginLeft="10dp"
                 android:id="@+id/img_lock"
                 android:src="@mipmap/icons8_key_500"
-                android:layout_width="50dp"
-                android:layout_height="50dp" />
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
 
             <TextView
                 android:layout_centerVertical="true"
@@ -83,17 +80,18 @@
                 android:textColor="@color/primaryTextColor"
                 android:textSize="18sp" />
         </RelativeLayout>
+
+
         <RelativeLayout
             android:id="@+id/tv_change_username"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_marginLeft="10dp"
                 android:id="@+id/img_name"
                 android:src="@mipmap/icons8_edit_500"
-                android:layout_width="50dp"
-                android:layout_height="50dp" />
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
 
             <TextView
                 android:layout_centerVertical="true"
@@ -106,6 +104,7 @@
                 android:textSize="18sp" />
         </RelativeLayout>
 
+
         <TextView
             android:textColor="@color/primaryLightColor"
             android:layout_marginTop="10dp"
@@ -115,17 +114,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+
         <RelativeLayout
             android:id="@+id/tv_about_us_setting"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_marginLeft="10dp"
                 android:id="@+id/img_about_us"
                 android:src="@mipmap/icons8_about_500"
-                android:layout_width="50dp"
-                android:layout_height="50dp" />
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
 
             <TextView
                 android:layout_centerVertical="true"
@@ -140,15 +139,14 @@
 
         <RelativeLayout
             android:id="@+id/tv_rate_app_setting"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_marginLeft="10dp"
                 android:id="@+id/img_rate"
                 android:src="@mipmap/icons8_rating_512"
-                android:layout_width="50dp"
-                android:layout_height="50dp" />
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
 
             <TextView
                 android:layout_centerVertical="true"
@@ -161,17 +159,17 @@
                 android:textSize="18sp" />
         </RelativeLayout>
 
+
         <RelativeLayout
             android:id="@+id/tv_share_setting"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_marginLeft="10dp"
                 android:id="@+id/img_share"
                 android:src="@mipmap/icons8_share_500"
-                android:layout_width="50dp"
-                android:layout_height="50dp" />
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
 
             <TextView
                 android:layout_centerVertical="true"
@@ -186,15 +184,14 @@
 
         <RelativeLayout
             android:id="@+id/tv_feed_back_setting"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_marginLeft="10dp"
                 android:id="@+id/img_feedback"
                 android:src="@mipmap/icons8_feed_back_500"
-                android:layout_width="50dp"
-                android:layout_height="50dp" />
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
 
             <TextView
                 android:layout_centerVertical="true"
@@ -208,17 +205,15 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_marginBottom="2dp"
             android:id="@+id/tv_logout_setting"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_marginLeft="10dp"
                 android:id="@+id/img_logout"
                 android:src="@mipmap/icons8_contacts_500"
-                android:layout_width="50dp"
-                android:layout_height="50dp" />
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
 
             <TextView
                 android:layout_centerVertical="true"

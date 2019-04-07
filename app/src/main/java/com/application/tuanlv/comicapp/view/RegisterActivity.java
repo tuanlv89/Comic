@@ -48,35 +48,40 @@ public class RegisterActivity extends AppCompatActivity {
         final String name = edtName.getEditText().getText().toString().trim();
         String email = edtEmail.getEditText().getText().toString().trim();
         String passwd = edtPasswd.getEditText().getText().toString().trim();
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Starting sign up...");
-        progressDialog.show();
+        if(name.isEmpty()||email.isEmpty()||passwd.isEmpty()) {
+            Snackbar.make(btnRegister, "Please complete all information!", Snackbar.LENGTH_LONG).show();
+        } else {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Starting sign up...");
+            progressDialog.show();
 
-        mAuth.createUserWithEmailAndPassword(email, passwd)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            mUsers.child(mAuth.getCurrentUser().getUid()).child("Name").setValue(name)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        progressDialog.dismiss();
-                                        if(task.isSuccessful()) {
-                                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                            startActivity(intent);
-                                            finish();
-                                        } else {
-                                            Snackbar.make(btnRegister, task.getException().getMessage(), Snackbar.LENGTH_LONG).show();
-                                        }
-                                    }
-                                });
-                        } else {
-                            progressDialog.dismiss();
-                            Snackbar.make(btnRegister, task.getException().getMessage(), Snackbar.LENGTH_LONG).show();
+            mAuth.createUserWithEmailAndPassword(email, passwd)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                mUsers.child(mAuth.getCurrentUser().getUid()).child("Name").setValue(name)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                progressDialog.dismiss();
+                                                if(task.isSuccessful()) {
+                                                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                } else {
+                                                    Snackbar.make(btnRegister, task.getException().getMessage(), Snackbar.LENGTH_LONG).show();
+                                                }
+                                            }
+                                        });
+                            } else {
+                                progressDialog.dismiss();
+                                Snackbar.make(btnRegister, task.getException().getMessage(), Snackbar.LENGTH_LONG).show();
+                            }
                         }
-                    }
-                });
+                    });
+        }
+
     }
 
     private void initView() {
