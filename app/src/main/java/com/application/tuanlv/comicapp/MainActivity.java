@@ -26,8 +26,6 @@ import com.application.tuanlv.comicapp.receiver.NetworkChangeReceiver;
 import com.application.tuanlv.comicapp.view.StartActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
-import static com.application.tuanlv.comicapp.fragment.CategoriesFragment.scrollView;
-
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mMainNav;

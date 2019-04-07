@@ -54,13 +54,13 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Calendar;
+
 
 import static android.app.Activity.RESULT_OK;
 
 public class SettingsFragment extends Fragment implements View.OnClickListener {
-    public static final String STORAGE_PATH = "image/";
-    public static final int REQUEST_CODE_PICK_IMAGE = 1412;
+    public final String STORAGE_PATH = "image/";
+    public final int REQUEST_CODE_PICK_IMAGE = 1412;
 
     private DatabaseReference mUser;
     private FirebaseAuth mAuth;

@@ -50,7 +50,7 @@ public class CategoriesFragment extends Fragment {
     private RecyclerView recycler_action, recycler_adventure, recycler_comedy, recycler_sports;
     private Toolbar toolbar_categories;
     private DatabaseReference mComic;
-    public static ScrollView scrollView;
+    public ScrollView scrollView;
     public static CategoriesFragment newInstance() {
         CategoriesFragment categoriesFragment = new CategoriesFragment();
         return categoriesFragment;
