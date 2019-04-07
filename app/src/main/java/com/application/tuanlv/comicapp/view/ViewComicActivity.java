@@ -21,7 +21,7 @@ public class ViewComicActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_comic);
-        ProgressLoading.show(ViewComicActivity.this);
+
         viewPager = findViewById(R.id.view_pager);
         ArrayList<String> links = SupportClass.chapterSelected.getLinks();
         fetchLinks(links);
@@ -34,7 +34,7 @@ public class ViewComicActivity extends AppCompatActivity {
                 ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getBaseContext(), SupportClass.chapterSelected.getLinks());
                 if(viewPagerAdapter!=null) {
                     viewPager.setAdapter(viewPagerAdapter);
-                    ProgressLoading.dismiss();
+
                     //Animation
                     BookFlipPageTransformer flipPageTransformer = new BookFlipPageTransformer();
                     flipPageTransformer.setScaleAmountPercent(3f);
