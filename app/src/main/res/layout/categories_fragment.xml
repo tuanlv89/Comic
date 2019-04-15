@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:textStyle="bold|italic"
-                    android:background="#FF7043"
+                    android:background="@drawable/horizontal_line"
                     android:textSize="20sp"
                     android:padding="5dp"
                     android:text="Action"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:textStyle="bold|italic"
-                    android:background="#FF7043"
+                    android:background="@drawable/horizontal_line"
                     android:padding="5dp"
                     android:text="Comedy"
                     android:textColor="@color/primaryTextColor"
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:textStyle="bold|italic"
-                    android:background="#FF7043"
+                    android:background="@drawable/horizontal_line"
                     android:text="Adventure"
                     android:padding="5dp"
                     android:textColor="@color/primaryTextColor"
@@ -90,7 +90,7 @@
                 android:layout_height="match_parent">
                 <TextView
                     android:textStyle="bold|italic"
-                    android:background="#FF7043"
+                    android:background="@drawable/horizontal_line"
                     android:text="Sports"
                     android:textColor="@color/primaryTextColor"
                     android:padding="5dp"

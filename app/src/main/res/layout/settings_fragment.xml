@@ -144,7 +144,7 @@
             <ImageView
                 android:layout_marginLeft="10dp"
                 android:id="@+id/img_rate"
-                android:src="@mipmap/icons8_rating_512"
+                android:src="@mipmap/icons8_star_filled_100"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
@@ -211,7 +211,7 @@
             <ImageView
                 android:layout_marginLeft="10dp"
                 android:id="@+id/img_logout"
-                android:src="@mipmap/icons8_contacts_500"
+                android:src="@mipmap/icons8_shutdown_100"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 

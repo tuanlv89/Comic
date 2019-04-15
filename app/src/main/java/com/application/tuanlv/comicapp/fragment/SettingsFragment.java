@@ -1,12 +1,11 @@
 package com.application.tuanlv.comicapp.fragment;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
-import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -14,25 +13,23 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.application.tuanlv.comicapp.MainActivity;
 import com.application.tuanlv.comicapp.R;
 import com.application.tuanlv.comicapp.dialog.ProgressLoading;
 import com.application.tuanlv.comicapp.service.PicassoLoadingService;
@@ -165,6 +162,9 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                                 }
                                 imgAvatar.setImageBitmap(bm);
                                 uploadImageToServer();
+                                if (bm!=null && !bm.isRecycled()){
+                                    bm.recycle();
+                                }
                             }
                         })
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -248,7 +248,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 changeUserName();
                 break;
             case R.id.tv_about_us_setting:
-                Toast.makeText(getContext(), "Team 2 NIIT-ICT Hà Nội", Toast.LENGTH_SHORT).show();
+                showDialog();
                 break;
             case R.id.tv_share_setting:
                 shareLink();
@@ -265,6 +265,21 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 break;
         }
 
+    }
+
+    private void showDialog() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_info);
+        ImageView btnOK = dialog.findViewById(R.id.btn_dialog_ok);
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
     private void shareLink() {

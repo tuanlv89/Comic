@@ -119,15 +119,6 @@ public class MainActivity extends AppCompatActivity {
         frameLayout = findViewById(R.id.frame_main);
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if (CategoriesFragment.materialSearchView.isSearchOpen()) {
-//            CategoriesFragment.materialSearchView.closeSearch();
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

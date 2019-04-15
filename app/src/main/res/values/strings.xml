@@ -4,4 +4,8 @@
     <string name="default_notification_channel_name">Comic life</string>
     <string name="email_title">title</string>
     <string name="email_body">message</string>
+    <string name="infoAuthor">
+        Lê Tuấn\n
+        github.com/tuanlv98
+    </string>
 </resources>
