@@ -248,7 +248,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 changeUserName();
                 break;
             case R.id.tv_about_us_setting:
-                Toast.makeText(getContext(), "Team 2 NIIT-ICT Hà Nội", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Lê Tuấn", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_share_setting:
                 shareLink();
